@@ -17,7 +17,7 @@
         </Grid.RowDefinitions>
         <ListBox x:Name="listbox" Grid.Column="0" Grid.Row="1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="20,60,20,30"/>
         <Label x:Name="listbox_label" Grid.Column="0" Grid.Row="1" Content="Kiválasztott" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top"/>
-        
+
         <Grid x:Name="display_view" Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="30*"/>
