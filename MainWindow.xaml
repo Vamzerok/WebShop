@@ -26,6 +26,6 @@
             <Button x:Name="btn_Save" Content="Save" HorizontalAlignment="Left" Margin="100,0,0,0" Grid.Row="1" VerticalAlignment="Center" Click="btn_Save_Click"/>
             <Button x:Name="btn_Copy" Content="Copy" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Row="1" VerticalAlignment="Center" Click="btn_Copy_Click"/>
             <Button x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Right" Margin="0,0,100,0" Grid.Row="1" VerticalAlignment="Center" Click="btn_Delete_Click"/>
-        </Grid>
+        </Grid> 
     </Grid>
 </Window>

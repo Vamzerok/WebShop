@@ -38,6 +38,6 @@ namespace WebShop
         private void btn_Delete_Click(object sender, RoutedEventArgs e)
         {
 
-        }
+        } 
     }
 }
