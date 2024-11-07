@@ -24,5 +24,20 @@ namespace WebShop
         {
             InitializeComponent();
         }
+
+        private void btn_Save_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_Copy_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btn_Delete_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
