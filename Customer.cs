@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.IO.Packaging;
 using System.Linq;
@@ -9,8 +10,17 @@ namespace WebShop
 {
     internal class Customer : Record
     {
-        public string Name { get; set; }
-        public string Address { get; set; }
-        public string Rank { get; set; }
+        public string nev { get; set; }
+        public string cim { get; set; }
+        public string rang { get; set; }
+
+        [JsonConstructor]
+        public Customer(int id, string nev, string cim, string rang) : base(id)
+        {
+            this.nev = nev;
+            this.cim = cim;
+            this.rang = rang;
+        }
+        public Customer(int id) : base(id) { }
     }
 }

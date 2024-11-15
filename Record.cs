@@ -8,6 +8,11 @@ namespace WebShop
 {
     internal abstract class Record
     {
-        public int Id { get; set; }
+        public int id { get; set; }
+
+        public Record(int id)
+        {
+            this.id = id; 
+        }
     }
 }
