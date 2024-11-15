@@ -16,16 +16,19 @@
             <ColumnDefinition Width="4*"/>
         </Grid.ColumnDefinitions>
 
-        <Menu Background="Transparent">
+        <Menu Background="Transparent" x:Name="menu">
             <MenuItem Header="_File">
                 <MenuItem Command="ApplicationCommands.Copy"/>
                 <MenuItem Command="ApplicationCommands.Cut"/>
                 <MenuItem Command="ApplicationCommands.Close"/>
             </MenuItem>
-            <MenuItem Header="_ViewSelect">
-                <MenuItem Header="Order"/>
-                <MenuItem Header="Product"/>
-                <MenuItem Header="Record"/>
+            <MenuItem Header="_ViewSelect" x:Name="viewSelect">
+                <MenuItem Header="Order" IsCheckable="False"
+                          IsChecked="True" Click="OrderClick"/>
+                <MenuItem Header="Product" IsCheckable="False"
+                          IsChecked="False" Click="ProductClick"/>
+                <MenuItem Header="Customer" IsCheckable="False"
+                          IsChecked="False" Click="CusotmerClick"/>
             </MenuItem>
         </Menu>
 
@@ -39,10 +42,10 @@
             <ListBox x:Name="listbox" Grid.Row="1"  Margin="20,30,20,30"/>
 
         </Grid>
-        <Grid x:Name="detailsView" Grid.Column="1" Grid.Row="1" Background="red">
+        <Grid x:Name="detailsView" Grid.Column="1" Grid.Row="1">
             <Grid.RowDefinitions>
                 <RowDefinition Height="10*"/>
-                <RowDefinition Height="auto"/>
+                <RowDefinition Height="2*"/>
             </Grid.RowDefinitions>
 
             <Grid x:Name="buttonColumns" Grid.Row="1" >
@@ -51,9 +54,9 @@
                     <ColumnDefinition/>
                     <ColumnDefinition/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="btn_Save" Content="Save" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Column="0" VerticalAlignment="Center" Click="btn_Save_Click"/>
-                <Button x:Name="btn_Copy" Content="Copy" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Column="1" VerticalAlignment="Center" Click="btn_Copy_Click"/>
-                <Button x:Name="btn_Delete" Content="Delete" HorizontalAlignment="Center" Margin="0,0,0,0" Grid.Column="2" VerticalAlignment="Center" Click="btn_Delete_Click"/>
+                <Button x:Name="btn_Save" Grid.Column="0" Content="Save" HorizontalAlignment="Stretch" Margin="10,10,10,10" VerticalAlignment="Stretch" Click="btn_Save_Click"/>
+                <Button x:Name="btn_Copy" Grid.Column="1" Content="Copy" HorizontalAlignment="Stretch" Margin="10,10,10,10" VerticalAlignment="Stretch" Click="btn_Copy_Click"/>
+                <Button x:Name="btn_Delete" Grid.Column="2" Content="Delete" HorizontalAlignment="Stretch" Margin="10,10,10,10" VerticalAlignment="Stretch" Click="btn_Delete_Click"/>
 
             </Grid>
         </Grid>
