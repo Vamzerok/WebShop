@@ -29,6 +29,7 @@ namespace WebShop
     public partial class MainWindow : Window
     {
         private DataBase dataBase;
+        private Record CurrentlyInDetailsView;
         public MainWindow()
         {
             InitializeComponent();
@@ -49,7 +50,6 @@ namespace WebShop
                     {
                         var lbItem = new ListBoxItem();
                         lbItem.Selected += (sender, e) => { LoadDetailsView(r); };
-                        lbItem.Tag = r;
                         lbItem.Content = $"Rendelés id: {r.id}";
                         listbox.Items.Add(lbItem);
                     }
@@ -60,7 +60,6 @@ namespace WebShop
                     {
                         var lbItem = new ListBoxItem();
                         lbItem.Selected += (sender, e) => { LoadDetailsView(r); };
-                        lbItem.Tag = r;
                         lbItem.Content = $"{r.nev}";
                         listbox.Items.Add(lbItem);
                     }
@@ -71,7 +70,6 @@ namespace WebShop
                     {
                         var lbItem = new ListBoxItem();
                         lbItem.Selected += (sender, e) => { LoadDetailsView(r); };
-                        lbItem.Tag = r;
                         lbItem.Content = $"{r.megnevezes}";
                         listbox.Items.Add(lbItem);
                     }
@@ -81,44 +79,23 @@ namespace WebShop
 
         private void LoadDetailsView(Record r)
         {
-            switch (r)
-            {
-                case Customer customer:
-                    var grid = new Grid();
-                    grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star)});
-                    grid.ColumnDefinitions.Add(new ColumnDefinition() { Width = new GridLength(1, GridUnitType.Star)});
+            btn_Copy.IsEnabled = true;
+            btn_Delete.IsEnabled = true;
+            btn_Save.IsEnabled = true;
 
-                    //tbMain
-                    var tbMain = new TextBlock() { Text = (r as Customer).nev};
-                    Grid.SetColumn(tbMain, 0);
-                    grid.Children.Add(tbMain);                    
-
-                    //other info
-                    foreach(var e in dataBase.GetKeys(DataBase.Table.Customers))
-
-                    detailsView.Children.Add(grid);
-                    break;
-                case Product product:
-                    // Handle Product-specific logic
-                    break;
-                case Order order:
-                    // Handle Order-specific logic
-                    break;
-                default:
-                    throw new InvalidOperationException("Unknown Record type.");
-            }
+            detailsViewMain.Children.Clear();
+            detailsViewMain.Children.Add(r.RenderDetails());
         }
+
         //---------- events ----------  
         private void OrderClick(object sender, RoutedEventArgs e)
         {
             LoadListView(DataBase.Table.Orders);
         }
-
         private void ProductClick(object sender, RoutedEventArgs e)
         {
             LoadListView(DataBase.Table.Products);
         }
-
         private void CusotmerClick(object sender, RoutedEventArgs e)
         {
             LoadListView(DataBase.Table.Customers);
@@ -126,6 +103,7 @@ namespace WebShop
 
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
+            dataBase.Save("out.json");
         }
 
         private void btn_Copy_Click(object sender, RoutedEventArgs e)
@@ -137,7 +115,5 @@ namespace WebShop
         {
 
         } 
-
-
     }
 }

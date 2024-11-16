@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
 
 namespace WebShop
 {
@@ -14,5 +15,7 @@ namespace WebShop
         {
             this.id = id; 
         }
+
+        public abstract ListBox RenderDetails();
     }
 }
