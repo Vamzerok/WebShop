@@ -7,15 +7,11 @@ using System.Windows.Controls;
 
 namespace WebShop
 {
-    internal abstract class Record
+    internal abstract class Book
     {
-        public int id { get; set; }
-
-        public Record(int id)
+        public Grid RenderDetails()
         {
-            this.id = id; 
+            throw new NotImplementedException();
         }
-
-        public abstract ListBox RenderDetails();
     }
 }

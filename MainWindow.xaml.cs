@@ -29,55 +29,20 @@ namespace WebShop
     public partial class MainWindow : Window
     {
         private DataBase dataBase;
-        private Record CurrentlyInDetailsView;
         public MainWindow()
         {
             InitializeComponent();
 
-            dataBase = new DataBase("webshop.json");
-            LoadListView(DataBase.Table.Orders);
+            dataBase = new DataBase();
         }
 
         //what desperation looks like
-        private void LoadListView(DataBase.Table table) 
+        private void LoadListView() 
         {
             listbox.Items.Clear();
-            switch (table)
-            {
-                case DataBase.Table.Orders:
-                    listbox_label.Content = "Rendelések";
-                    foreach(var r in dataBase.Orders)
-                    {
-                        var lbItem = new ListBoxItem();
-                        lbItem.Selected += (sender, e) => { LoadDetailsView(r); };
-                        lbItem.Content = $"Rendelés id: {r.id}";
-                        listbox.Items.Add(lbItem);
-                    }
-                    break;
-                case DataBase.Table.Customers:
-                    listbox_label.Content = "Ügyfelek";
-                    foreach(var r in dataBase.Customers)
-                    {
-                        var lbItem = new ListBoxItem();
-                        lbItem.Selected += (sender, e) => { LoadDetailsView(r); };
-                        lbItem.Content = $"{r.nev}";
-                        listbox.Items.Add(lbItem);
-                    }
-                    break;
-                case DataBase.Table.Products:
-                    listbox_label.Content = "Termékek";
-                    foreach(var r in dataBase.Products)
-                    {
-                        var lbItem = new ListBoxItem();
-                        lbItem.Selected += (sender, e) => { LoadDetailsView(r); };
-                        lbItem.Content = $"{r.megnevezes}";
-                        listbox.Items.Add(lbItem);
-                    }
-                    break;
-            }
         }
 
-        private void LoadDetailsView(Record r)
+        private void LoadDetailsView(Book r)
         {
             btn_Copy.IsEnabled = true;
             btn_Delete.IsEnabled = true;
@@ -90,20 +55,20 @@ namespace WebShop
         //---------- events ----------  
         private void OrderClick(object sender, RoutedEventArgs e)
         {
-            LoadListView(DataBase.Table.Orders);
+            LoadListView();
         }
         private void ProductClick(object sender, RoutedEventArgs e)
         {
-            LoadListView(DataBase.Table.Products);
+            LoadListView();
         }
         private void CusotmerClick(object sender, RoutedEventArgs e)
         {
-            LoadListView(DataBase.Table.Customers);
+            LoadListView();
         } 
 
         private void btn_Save_Click(object sender, RoutedEventArgs e)
         {
-            dataBase.Save("out.json");
+            //dataBase.Save("out.json");
         }
 
         private void btn_Copy_Click(object sender, RoutedEventArgs e)
