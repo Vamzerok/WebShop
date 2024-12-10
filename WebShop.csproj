@@ -58,13 +58,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Customer.cs" />
     <Compile Include="DataBase.cs" />
-    <Compile Include="FileFormat.cs" />
-    <Compile Include="Order.cs" />
-    <Compile Include="Product.cs" />
-    <Compile Include="Record.cs" />
-    <Compile Include="Renderer.cs" />
+    <Compile Include="Book.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
